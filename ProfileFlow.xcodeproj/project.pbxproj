@@ -6,17 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		E290BC122DCA598900C3925F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290BC112DCA598900C3925F /* InitialViewController.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		E290BBE52DCA54D800C3925F /* ProfileFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfileFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E290BC112DCA598900C3925F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		E290BBF72DCA54DB00C3925F /* Exceptions for "ProfileFlow" folder in "ProfileFlow" target */ = {
+		01991CD02DCAB2CC008CC326 /* Exceptions for "ProfileFlow" folder in "ProfileFlow" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -26,10 +21,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E290BBE72DCA54D800C3925F /* ProfileFlow */ = {
+		01991CC92DCAB2CC008CC326 /* ProfileFlow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				E290BBF72DCA54DB00C3925F /* Exceptions for "ProfileFlow" folder in "ProfileFlow" target */,
+				01991CD02DCAB2CC008CC326 /* Exceptions for "ProfileFlow" folder in "ProfileFlow" target */,
 			);
 			path = ProfileFlow;
 			sourceTree = "<group>";
@@ -50,8 +45,7 @@
 		E290BBDC2DCA54D800C3925F = {
 			isa = PBXGroup;
 			children = (
-				E290BC102DCA585600C3925F /* Views */,
-				E290BBE72DCA54D800C3925F /* ProfileFlow */,
+				01991CC92DCAB2CC008CC326 /* ProfileFlow */,
 				E290BBE62DCA54D800C3925F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,14 +56,6 @@
 				E290BBE52DCA54D800C3925F /* ProfileFlow.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E290BC102DCA585600C3925F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E290BC112DCA598900C3925F /* InitialViewController.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,7 +74,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E290BBE72DCA54D800C3925F /* ProfileFlow */,
+				01991CC92DCAB2CC008CC326 /* ProfileFlow */,
 			);
 			name = ProfileFlow;
 			packageProductDependencies = (
@@ -146,7 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E290BC122DCA598900C3925F /* InitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

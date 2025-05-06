@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class InitialViewController: UIViewController {
     
@@ -74,8 +75,8 @@ class InitialViewController: UIViewController {
     }
     
     @objc func goToProfileView() {
-        let nextView = UIViewController()
-        nextView.title = "Profile View"
-        navigationController?.pushViewController(nextView, animated: true)
+        let profileView = ProfileView()
+        let hostingController = UIHostingController(rootView: profileView)
+        navigationController?.pushViewController(hostingController, animated: true)
     }
 }
