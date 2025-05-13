@@ -11,6 +11,8 @@ struct ProfileView: View {
     var onEditProfile: (() -> Void)?
     var onOpenSettings: (() -> Void)?
     
+    @State var isPresentingEditProfile = false
+    
     var body: some View {
         VStack(spacing: 32) {
             Image(systemName: "person.circle.fill")
@@ -30,6 +32,7 @@ struct ProfileView: View {
             Spacer()
 
             Button("Editar perfil") {
+                isPresentingEditProfile = true
                 onEditProfile?()
             }
             .buttonStyle(.bordered)
@@ -43,6 +46,24 @@ struct ProfileView: View {
         }
         .padding()
         .navigationTitle("Perfil")
+        .sheet(isPresented: $isPresentingEditProfile) {
+                    EditProfileVCRepresentable()
+        }
+    }
+}
+
+/*
+ Wrapper for EditProfileViewController, in order to be presented by SwiftUI framework.
+ */
+struct EditProfileVCRepresentable : UIViewControllerRepresentable {
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+
+    func makeUIViewController(context: Context) -> EditProfileViewController {
+        let viewController = EditProfileViewController()
+        return viewController
     }
 }
 

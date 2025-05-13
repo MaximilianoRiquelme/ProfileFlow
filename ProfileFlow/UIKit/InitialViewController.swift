@@ -15,16 +15,18 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Initial View"
+        title = "Pagina Principal"
         view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
         
         setUpNavigationBar()
+        setupDescriptionLabel()
+        setupGoToProfileButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpDescriptionLabel()
-        setupGoToProfileButton()
+        //setupDescriptionLabel()
+        //setupGoToProfileButton()
     }
     
     func setUpNavigationBar() {
@@ -38,9 +40,9 @@ class InitialViewController: UIViewController {
         self.navigationController?.navigationBar.compactScrollEdgeAppearance = navBarAppearance
     }
     
-    func setUpDescriptionLabel () {
+    func setupDescriptionLabel () {
         view.addSubview(descriptionLabel)
-        descriptionLabel.text = "This is a UIKit View, with the porpouse to show the navigation to another SwiftUI View, utilizing UIHostingController"
+        descriptionLabel.text = "Esta es una aplicacion que demuestra los mecanismos de navegacion y pasaje de datos, entre vistas de los distintos frameworks UIKit y SwiftUI. Utilizando UIHostingController y UIViewControllerRepresentable para la navegacion."
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.numberOfLines = 0
         
@@ -48,7 +50,7 @@ class InitialViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            descriptionLabel.centerYAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: 35),
+            descriptionLabel.centerYAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: 65),
             descriptionLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
             descriptionLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.9)
         ])
@@ -58,9 +60,8 @@ class InitialViewController: UIViewController {
         view.addSubview(goToProfileButton)
         
         // Appearance configuration.
-        goToProfileButton.configuration = .filled()
-        goToProfileButton.configuration?.baseBackgroundColor = .systemTeal
-        goToProfileButton.configuration?.title = "Go to Profile View"
+        goToProfileButton.configuration = .bordered()
+        goToProfileButton.configuration?.title = "Ir a Perfil"
         
         goToProfileButton.addTarget(self, action: #selector(goToProfileView), for: .touchUpInside)
         
