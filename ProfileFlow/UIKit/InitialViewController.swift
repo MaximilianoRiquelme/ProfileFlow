@@ -13,6 +13,8 @@ class InitialViewController: UIViewController {
     let descriptionLabel = UILabel()
     let goToProfileButton = UIButton()
     
+    let settings = SettingsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pagina Principal"
