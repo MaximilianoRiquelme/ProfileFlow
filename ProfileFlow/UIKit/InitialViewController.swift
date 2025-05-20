@@ -15,6 +15,8 @@ class InitialViewController: UIViewController {
     
     let settings = SettingsView()
     
+    weak var coordinator: AppCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pagina Principal"
@@ -78,8 +80,10 @@ class InitialViewController: UIViewController {
     }
     
     @objc func goToProfileView() {
-        let profileView = ProfileView()
+       /* let profileView = ProfileView()
         let hostingController = UIHostingController(rootView: profileView)
-        navigationController?.pushViewController(hostingController, animated: true)
+        navigationController?.pushViewController(hostingController, animated: true)*/
+        print("Botón 'Ir a Perfil' presionado")
+        coordinator?.showProfile()
     }
 }

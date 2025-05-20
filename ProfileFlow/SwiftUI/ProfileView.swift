@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     var onEditProfile: (() -> Void)?
+    var onSettings: (() -> Void)?
     
-    @State var isPresentingEditProfile = false
-    @State private var isPresentingSettings = false
+   /* @State var isPresentingEditProfile = false
+    @State private var isPresentingSettings = false*/
     
     var body: some View {
         VStack(spacing: 32) {
@@ -32,13 +33,14 @@ struct ProfileView: View {
             Spacer()
 
             Button("Editar perfil") {
-                isPresentingEditProfile = true
+               // isPresentingEditProfile = true
                 onEditProfile?()
             }
             .buttonStyle(.bordered)
 
             Button("Configuración") {
-                isPresentingSettings = true
+            //    isPresentingSettings = true
+                onSettings?()
             }
             .buttonStyle(.bordered)
 
@@ -46,12 +48,12 @@ struct ProfileView: View {
         }
         .padding()
         .navigationTitle("Perfil")
-        .sheet(isPresented: $isPresentingEditProfile) {
+       /* .sheet(isPresented: $isPresentingEditProfile) {
                     EditProfileVCRepresentable()
         }
         .sheet(isPresented: $isPresentingSettings) {
                    SettingsView()
-        }
+        }*/
     }
 }
 
