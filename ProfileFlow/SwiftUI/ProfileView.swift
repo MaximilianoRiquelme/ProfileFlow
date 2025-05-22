@@ -11,9 +11,6 @@ struct ProfileView: View {
     var onEditProfile: (() -> Void)?
     var onSettings: (() -> Void)?
     
-   /* @State var isPresentingEditProfile = false
-    @State private var isPresentingSettings = false*/
-    
     var body: some View {
         VStack(spacing: 32) {
             Image(systemName: "person.circle.fill")
@@ -33,13 +30,11 @@ struct ProfileView: View {
             Spacer()
 
             Button("Editar perfil") {
-               // isPresentingEditProfile = true
                 onEditProfile?()
             }
             .buttonStyle(.bordered)
 
             Button("Configuración") {
-            //    isPresentingSettings = true
                 onSettings?()
             }
             .buttonStyle(.bordered)
@@ -48,12 +43,6 @@ struct ProfileView: View {
         }
         .padding()
         .navigationTitle("Perfil")
-       /* .sheet(isPresented: $isPresentingEditProfile) {
-                    EditProfileVCRepresentable()
-        }
-        .sheet(isPresented: $isPresentingSettings) {
-                   SettingsView()
-        }*/
     }
 }
 

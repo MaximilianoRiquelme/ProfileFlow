@@ -80,10 +80,6 @@ class InitialViewController: UIViewController {
     }
     
     @objc func goToProfileView() {
-       /* let profileView = ProfileView()
-        let hostingController = UIHostingController(rootView: profileView)
-        navigationController?.pushViewController(hostingController, animated: true)*/
-        print("Botón 'Ir a Perfil' presionado")
         coordinator?.showProfile()
     }
 }
