@@ -4,12 +4,14 @@
 //
 //  Created by Agustina Behotas on 06/05/2025.
 //
-
+import Foundation
 import SwiftUI
 
 struct ProfileView: View {
     var onEditProfile: (() -> Void)?
     var onSettings: (() -> Void)?
+    
+    @ObservedObject var userProfile: UserProfileViewModel
     
     var body: some View {
         VStack(spacing: 32) {
@@ -20,11 +22,11 @@ struct ProfileView: View {
                 .padding(.top, 40)
 
             VStack(spacing: 8) {
-                Text("Agustina Behotas")
+                Text(userProfile.name)
                     .font(.title2)
                     .bold()
-                Text("Edad: 28")
-                Text("agus@email.com")
+                Text(userProfile.age)
+                Text(userProfile.email)
             }
 
             Spacer()
@@ -58,12 +60,6 @@ struct EditProfileVCRepresentable : UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> EditProfileViewController {
         let viewController = EditProfileViewController()
         return viewController
-    }
-}
-
-#Preview {
-    NavigationView {
-        ProfileView()
     }
 }
 

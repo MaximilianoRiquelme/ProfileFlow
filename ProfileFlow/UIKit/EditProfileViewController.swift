@@ -10,11 +10,13 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
     
+    var onSave: ((UserProfileViewModel) -> Void)?
+    
     let titleLabel = UILabel()
     let profileImageView = UIImageView()
     let nameTextField = UITextField()
     let emailTextField = UITextField()
-    let bioTextField = UITextField()
+    let ageTextField = UITextField()
     let saveButton = UIButton(type: .system)
     
     override func viewDidLoad() {
@@ -25,7 +27,7 @@ class EditProfileViewController: UIViewController {
         setupProfileImageView()
         setupNameTextField()
         setupEmailTextField()
-        setupBioTextField()
+        setupAgeTextField()
         setupSaveButton()
         setupLayout()
         setupActions()
@@ -60,10 +62,10 @@ class EditProfileViewController: UIViewController {
         view.addSubview(emailTextField)
     }
     
-    func setupBioTextField() {
-        bioTextField.placeholder = "Bio"
-        bioTextField.borderStyle = .roundedRect
-        view.addSubview(bioTextField)
+    func setupAgeTextField() {
+        ageTextField.placeholder = "Age"
+        ageTextField.borderStyle = .roundedRect
+        view.addSubview(ageTextField)
     }
     
     func setupSaveButton() {
@@ -81,7 +83,7 @@ class EditProfileViewController: UIViewController {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        bioTextField.translatesAutoresizingMaskIntoConstraints = false
+        ageTextField.translatesAutoresizingMaskIntoConstraints = false
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         
         // Utilizing top and bottom anchor points (plus a constant) to make every ui element trail vertically one after another, starting from the title anchored to the top of the safe area.
@@ -102,15 +104,15 @@ class EditProfileViewController: UIViewController {
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // Email
-            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 15),
-            emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
+            // Age
+            ageTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 15),
+            ageTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            ageTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
             
-            // Bio
-            bioTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
-            bioTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
-            bioTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
+            // Email
+            emailTextField.topAnchor.constraint(equalTo: ageTextField.bottomAnchor, constant: 15),
+            emailTextField.leadingAnchor.constraint(equalTo: ageTextField.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: ageTextField.trailingAnchor),
             
             // Save Button. Anchor point fixed to the bottom of the safe area.
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -132,14 +134,18 @@ class EditProfileViewController: UIViewController {
     
     // Mocked. TODO: Should open a UIImagePickerController.
     @objc private func profileImageTapped() {
-        print("Cambiando foto de perfil!")
     }
     
     // Mocked. TODO: Should pass the data back to the SwiftUI view so it can be updated, as pressing the save button is confirmation of this action, otherwise the changes can be discarted.
     @objc private func saveButtonTapped() {
-        print("Guardando perfil!")
-        // Dismiss the view controller.
-        // Should work if presented as a UIViewControllerRepresentable too.
-        dismiss(animated: true, completion: nil)
+        // Create a new profile with updated data.
+        let updateProfile = UserProfileViewModel(
+            name: nameTextField.text ?? "",
+            age: ageTextField.text ?? "",
+            email: emailTextField.text ?? ""
+        )
+        
+        // Passes the updated profile data back to the coordinator.
+        onSave?(updateProfile)
     }
 }
